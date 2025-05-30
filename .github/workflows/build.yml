@@ -1,0 +1,20 @@
+name: macOS Build and Run
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-run:
+    runs-on: macos-latest  # 关键：使用 macOS 运行器
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Run executable
+      run: ./shell-demo
+      env:
+        CUSTOM_ENV: "value"  # 可选：设置环境变量
